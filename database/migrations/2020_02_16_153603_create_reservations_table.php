@@ -11,24 +11,20 @@ class CreateReservationsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() //creates table columns
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
             //added elements
-            $table->integer('user_id')->unsigned(); //unsigned big int
+            $table->unsignedBigInteger('user_id'); //unsigned big int
             $table->foreign('user_id')->references('id')->('users'); //foreign key referencing id field of users table
-            $table->integer('room_id')->unsigned();
+            $table->unsigneedBigInteger('room_id');
             $table->foreign('room_id')->references('id')->('rooms');
             $table->integer('num_of_guests');
             $table->date('arrival');
             $table->date('departure');
             //end of added elements
             $table->timestamps();
-
-            //creating the culumns
-            $sql = "INSERT INTO reservations (column1, column2, column3, column4, column5) VALUES  ('user_id', 'room_id', 'num_of_guests', 'arrival', 'departure')"
-        });
     }
 
     /**
@@ -39,5 +35,12 @@ class CreateReservationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('reservations');
+        $table->drop('user_id');
+        $table->dropForeign('reservations_user_id_foreign');
+        $table->drop('room_id');
+        $table->dropForeign('reservations_room_id_foreign');
+        $table->drop('num_of_guests');
+        $table->drop('arrival');
+        $table->drop('departure');
     }
 }

@@ -28,8 +28,12 @@ class CreateHotelsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() //creating a Rollback, used to convert a achange to the database schema
     {
         Schema::dropIfExists('hotels');
+            $table->drop('name');
+            $table->drop('location');
+            $table->drop('description');
+            $table->drop('image');
     }
 }

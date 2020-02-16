@@ -1,5 +1,6 @@
 <?php
-
+//Models are singular and provides an active record way of working with the db
+//every db has a model
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -39,6 +40,6 @@ class User extends Authenticatable
 
     //relationship so user can have many Reservations
     public function reservations(){
-      return $this->hasMany('App\Models\Reservations');
+      return $this->hasMany( related: 'App\Models\Reservations');
     }
 }
