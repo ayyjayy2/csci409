@@ -15,6 +15,6 @@ class Hotel extends Model
     ];
     //set up hasMany side of our hotel -> rooms relation
     public function rooms() {
-      return $this->hasMany('App\Models\Room');
+      return $this->hasMany('App\Models\Rooms'); //should room be capitalized?
     }
 }
