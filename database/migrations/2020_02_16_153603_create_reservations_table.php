@@ -25,6 +25,9 @@ class CreateReservationsTable extends Migration
             $table->date('departure');
             //end of added elements
             $table->timestamps();
+
+            //creating the culumns
+            $sql = "INSERT INTO reservations (column1, column2, column3, column4, column5) VALUES  ('user_id', 'room_id', 'num_of_guests', 'arrival', 'departure')"
         });
     }
 
