@@ -23,6 +23,7 @@ class CreateRoomsTable extends Migration
             $table->decimal('price',10,2); //add data type: dcimal names 'price' with 10 digits with 2 to the right of the decimal
             $table->string('image'); //then create the columns before adding to repository and commit changes
             $table->timestamps(); //predefined field of migration
+          });
     }
 
     /**
