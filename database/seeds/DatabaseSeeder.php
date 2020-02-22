@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+      //loading seeders.  (It is imperative to get the correct order as the 
+      //foreign key constraints will fail otherwise)
+        $this->call(UsersTableSeeder::class);
+        $this->call(HotelsTableSeeder::class);
+        $this->call(RoomsTableSeeder::class);
+        $this->call(ReservationsTableSeeder::class);
     }
 }
