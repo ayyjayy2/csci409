@@ -32,5 +32,9 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        $table->drop('name');
+        $table->drop('email');
+        $table->drop('email_verified_at');
+        $table->drop('password');
     }
 }

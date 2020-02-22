@@ -31,5 +31,9 @@ class CreateFailedJobsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('failed_jobs');
+        $table->drop('connection');
+        $table->drop('queue');
+        $table->drop('payload');
+        $table->drop('exception');
     }
 }
