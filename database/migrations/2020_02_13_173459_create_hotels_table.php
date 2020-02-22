@@ -16,7 +16,7 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('location');
+            $table->string('address_1');
             $table->string('description');
             $table->string('image');
             $table->timestamps();
@@ -32,7 +32,7 @@ class CreateHotelsTable extends Migration
     {
         Schema::dropIfExists('hotels');
             $table->drop('name');
-            $table->drop('location');
+            $table->drop('address_1');
             $table->drop('description');
             $table->drop('image');
     }
