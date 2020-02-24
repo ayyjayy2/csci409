@@ -16,7 +16,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id'); //predefined field of migration that is a primary key of the row
-            $table->unsigneedBigInteger('hotel_id'); //unsigned and foreign key that references the id field of the hotels table
+            $table->integer('hotel_id'); //unsigned and foreign key that references the id field of the hotels table
             $table->foreign('hotel_id')->references('id')->on('hotels'); //not sure if 'hotels' is right
             $table->string('type'); //these are the columns being created
             $table->string('description');

@@ -17,7 +17,7 @@ class HotelsTableSeeder extends Seeder
         /* array of specific hotels to be created to populate database. Note this is an array
         *of arrays where the inner arrays represent a single hotel
         */
-         = [
+         $hotels = [
             [
                 'name' => 'Port Orleans French Quarter',
                 'address_1' => '2201 Orleans Drive',
