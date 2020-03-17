@@ -29,4 +29,4 @@ Route::group(['prefix' => 'reservations'], function(){
     Route::post('reservations', function(){return 'Creating reservation';});
     Route::put('reservations/{id}', function($id){return 'Updating reservations id';});
     Route::delete('reservations/{id}', function($id){return 'Deleting reservation id';});
-})
+});
