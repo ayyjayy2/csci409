@@ -12,9 +12,12 @@ use Illuminate\Http\Request;
 //Eloquent ORM where each database table has a corresponding Model to interact with the table
 class HotelController extends Controller
 {
-    //load data from database
-    $hotels = Hotel::function_to_pull_data();
+  public function index()
+  {
+      ////load data from database
+      $hotels = Hotel::function_to_pull_data();
 
-    //display results and pass data to a hotels view file.
-    return view('hotels')->with('hotels',$hotels);
+      //display results and pass data to a hotels view file.
+      return view('hotels')->with('hotels',$hotels);
+  }
 }
