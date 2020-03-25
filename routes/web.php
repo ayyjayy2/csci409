@@ -21,6 +21,7 @@ Route::get('hotels', function(){
 
 Route::group(['prefix' => 'reservations'], function(){
     Route::get('/', function(){return 'Showing users homepage';});
+    /**delete all reservation related routes
     Route::get('reservations', function(){return 'Showing users reservations';});
     Route::get('reservations/new', function(){return 'Showing form to create reservations';});
     Route::get('reservations/{id}', function($id){return 'Showing reservations id';});
@@ -29,4 +30,5 @@ Route::group(['prefix' => 'reservations'], function(){
     Route::post('reservations', function(){return 'Creating reservation';});
     Route::put('reservations/{id}', function($id){return 'Updating reservations id';});
     Route::delete('reservations/{id}', function($id){return 'Deleting reservation id';});
+    **/
 });
