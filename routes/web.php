@@ -15,12 +15,16 @@ Route::get('/', function () {
     return '/route';
 });
 
+/**replace to point the /hotels route to the index function inside HotelController
 Route::get('hotels', function(){
     return '/hotels route';
 });
+**/
+Route::get('/hotels', 'HotelController@index');
 
 Route::group(['prefix' => 'reservations'], function(){
     Route::get('/', function(){return 'Showing users homepage';});
+    Route::create('reservations/create/{id}', 'ReservationController';});
     /**delete all reservation related routes
     Route::get('reservations', function(){return 'Showing users reservations';});
     Route::get('reservations/new', function(){return 'Showing form to create reservations';});
