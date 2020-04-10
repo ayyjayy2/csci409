@@ -34,7 +34,7 @@ Route::group(['prefix' => 'dashboard'], function(){
 
     //point reservations to the ReservationController
     Route::reservation('reservations', 'ReservationController');
-    
+
     //Route::create('reservations/create/{id}', 'ReservationController';});
     /**delete all reservation related routes
     Route::get('reservations', function(){return 'Showing users reservations';});
@@ -47,3 +47,9 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::delete('reservations/{id}', function($id){return 'Deleting reservation id';});
     **/
 });
+
+//creating two new routes : first a new hotel form
+Route::get('/hotels/create', 'HotelController@create');
+
+//save hotel record
+Route::post('/hotels/store', 'HotelController@store');

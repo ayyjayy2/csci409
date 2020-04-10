@@ -16,7 +16,7 @@ class HotelController extends Controller
   public function index()
   {
       ////load all hotel data from database
-      $hotels = Hotel::function_to_pull_data();
+      $hotels = Hotel::all();
 
       //display results and pass data to a hotels view file.
       return view('hotels')->with('hotels',$hotels);
@@ -26,9 +26,10 @@ class HotelController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
+  public function create(Request $request)
   {
-      //
+      //return a view called hotelform
+      return view('hotelform');
   }
 
   /**
@@ -39,7 +40,11 @@ class HotelController extends Controller
    */
   public function store(Request $request)
   {
-      //
+      //save the new hotel to the database
+      Hotel::create(['field1' => $request->input('form_field_1'), 'field2' => $request->input('form_field_2')]);
+
+      //redirect bakc to /hotels route
+      return redirect()->route('/hotels');
   }
 
   /**
