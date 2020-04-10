@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Reservation;
+use App\Models\Reservation; //type hints the Models/Reservation model
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -17,9 +17,10 @@ class ReservationController extends Controller
         //load all reservations ordered by arrival in ascending order (use orderBy and get)
         //orderBy
         //get
-        Route::get('reservations/{id}', function($id)){
+        //Route::get('reservations/{id}', function($id)){
           //ordered
-        }); //idk
+        //}); 
+        $reservations=Reservation::orderBy('arrival','asc')->get();
 
         //pass results to a reservation view file
         return view('reservations')->with('reservations',$reservations);

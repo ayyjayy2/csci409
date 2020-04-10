@@ -20,11 +20,22 @@ Route::get('hotels', function(){
     return '/hotels route';
 });
 **/
+
+//This will point the /hotels route to the index function inside your HotelController
 Route::get('/hotels', 'HotelController@index');
 
-Route::group(['prefix' => 'reservations'], function(){
+//Dashboard group
+
+Route::group(['prefix' => 'dashboard'], function(){
     Route::get('/', function(){return 'Showing users homepage';});
-    Route::create('reservations/create/{id}', 'ReservationController';});
+
+    //Point the route reservations/create/{id} to the create function in the ReservationController
+    Route::get('reservations/create/{id}', 'ReservationController@create');
+
+    //point reservations to the ReservationController
+    Route::reservation('reservations', 'ReservationController');
+    
+    //Route::create('reservations/create/{id}', 'ReservationController';});
     /**delete all reservation related routes
     Route::get('reservations', function(){return 'Showing users reservations';});
     Route::get('reservations/new', function(){return 'Showing form to create reservations';});
