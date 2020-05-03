@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Observers;
+
+//references Models/Hotel Model
+use App\Models\Hotel;
+
+class HotelObserver
+{
+    /**
+     * create function that accepts hotel model as a parameter (same to 'created' function)
+     *
+     * @return void
+     */
+     public function creating(Hotel $hotel)
+     {
+        //include data from chp 10 ass 1
+        $api_key ='36d163fcddc7c87b5ac817bdb55d86f0';
+        $endpoint='http://api.positionstack.com/v1/forward';
+        $street = '115 Ivystone Drive';
+        $city = 'Myrle Beach';
+        $state = 'SC';
+        $zip = '29588';
+        $address = '$street $city $state $zip';
+
+        //hotel address
+        $params=array(
+          'apiKey' => $api_key;
+          'query' => $address;
+        );
+
+        $query_string = http_build_query($params);
+        $json = file_get_contents($endpoint."?".$query_string);
+        $data = json_decode($json);
+        $data = $data->data[0];
+
+        $lat = $data->lat;
+        $lon = $data->lon;
+        //conclude data from part 1 ass
+
+        //save lat and lon to db
+        $hotel->latitude = $lat;
+        $hotel->longitude = $lon;
+
+        //IMPORTANT: do not call $hotel->save in the creating function. this will
+        //cause an infinit loop that will crash the program 
+
+     }
+
+     /**
+      * Handle the hotel "created" event.
+      *
+      * @param \App\Models\Hotel $hotel
+      * @return void
+      */
+      public function created(Hotel $hotel)
+      {
+          //
+      }
+
+      /**
+       * Handle the hotel "updated" event.
+       *
+       * @param \App\Models\Hotel $hotel
+       * @return void
+       */
+       public function updated(Hotel $hotel)
+       {
+          //
+       }
+
+       /**
+        * Handle the hotel "deleted" event.
+        *
+        * @param \App\Models\Hotel $hotel
+        * @return void
+        */
+        public function deleted(Hotel $hotel)
+        {
+            //
+        }
+
+        /**
+         * Handle the hotel "restored" event.
+         *
+         * @param \App\Models\Hotel $hotel
+         * @return void
+         */
+         public function restored(Hotel $hotel)
+         {
+            //
+         }
+
+         /**
+          * Handle the hotel "force deleted" event.
+          *
+          * @param \App\Models\Hotel $hotel
+          * @return void
+          */
+          public function forceDeleted(Hotel $hotel)
+          {
+              //
+          }
+}
