@@ -1,0 +1,42 @@
+<?php
+/**
+ * Observers
+ *    composed of events that are fired when certain actions occur to an Eloquent model.
+ *    allows you to pull the event listeners out of the mode, thereby keeping your
+ *    code clean
+ */
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Scheme\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddLatLonToHotels extends Migrations
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+     public function up()
+     {
+        Schema::table('hotels', function (Blueprint $table) {
+            /** Inside your migration create two new fields called lat and lon with
+             * attributes; data type = float, and default value = 0
+             */
+             $table->float('lat',0);
+             $table->float('lon',0);
+        });
+     }
+
+     /**
+      * Reverse the migrations.
+      *
+      * @return void
+      */
+      public function down()
+      {
+          Schema::table('hotels', function (Blueprint $table) {
+              //
+          });
+      }
+}
